@@ -1,0 +1,45 @@
+.tweet-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+}
+
+.tweet {
+  display: flex;
+  flex-direction: column;
+  border: solid;
+  border-width: 3px;
+  margin-top: 30px;
+  padding: 15px;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.avatarAndUsername {
+  display: flex;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  margin-right: 20px;
+}
+
+.tweet-content {
+  border-bottom: solid;
+  border-width: 3px;
+}
+
+.additional-info {
+  display:flex;
+  justify-content: space-between;
+}
+
+.days-ago {
+  font-size: medium;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
