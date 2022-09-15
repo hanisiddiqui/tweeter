@@ -37,3 +37,11 @@
   color: red;
 }
 
+.input-error-empty {
+  color: red;
+}
+
+.input-error-toolong {
+  color: red;
+}
+

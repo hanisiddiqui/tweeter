@@ -3,26 +3,61 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
+const loadTweets = function () {
+  $.ajax('/tweets', { method: 'GET'})
+  .then(function(moreTweets) {
+    renderTweets(moreTweets);
+  })
+};
+
+const renderTweets = (tweets) => {
+  for (let tweet of tweets) {
+    const html = createTweetElement(tweet);
+    $('.tweet-container').prepend(html);
+  }
+};
+
+const escapeUserText = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 $(document).ready(function() {
   // --- our code goes here ---
-  renderTweets(tweetData);
+  loadTweets();
+
+  $(".input-error-toolong").hide();
+  $(".input-error-empty").hide();
 
   $("#tweet-form").submit(function(event) {
     event.preventDefault();
     const data = $(this).serialize();
+    
+    if (data === "text=" || data === null) {
+      return $(".input-error-empty").slideDown();
+    }
+    const tweetText = $(this).find('textarea');
+
+    if (tweetText.val().length > 140) {
+      return $(".input-error-toolong").slideDown();
+    }
     $.ajax({
       method: "POST",
       url: "/tweets",
       data,
     })
-      .done(function( msg ) {
-        console.log("Post done");
+      .done(( msg ) => {
+        $(".tweet-container").empty();
+        loadTweets();
+        this.reset();
       });
   });
 });
 
-
 const createTweetElement  = (tweetObject) => {
+  const safeHTML = `<p>${escapeUserText(tweetObject.content.text)}</p>`;
   const html = `<article class="tweet"> 
   <section class="user-info">
     <section class="avatarAndUsername">
@@ -36,13 +71,11 @@ const createTweetElement  = (tweetObject) => {
     </p>
   </section>
   <section class="tweet-content">
-    <p>
-      ${tweetObject.content.text}
-    </p>
+      ${safeHTML}
   </section>
   <section class="additional-info">
     <p class="days-ago">
-      ${tweetObject.created_at}
+      ${timeago.format(Date(tweetObject.created_at))}
     </p>
     <section class="icons">
       <i class="fa-solid fa-flag"></i>
@@ -54,38 +87,5 @@ const createTweetElement  = (tweetObject) => {
 
 return html;
 };
-
-const renderTweets = (tweets) => {
-  for (let tweet of tweets) {
-    const html = createTweetElement(tweet);
-    $('.tweet-container').prepend(html);
-  }
-};
-
-const tweetData = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-        "handle": "@SirIsaac"
-      },
-    "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  } 
-];
-
-
 
 
