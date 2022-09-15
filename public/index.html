@@ -54,43 +54,15 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <form>
+        <form method="POST" action="/" id="tweet-form">
           <textarea class="tweet-input" placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
           <div class="tweet-chars">
-            <button class="tweet-button" method="POST" action="/" type="submit">Tweet</button>
+            <button class="tweet-button" type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
       </section>
       <article class="tweet-container">
-        <article class="tweet"> 
-          <section class="user-info">
-            <section class="avatarAndUsername">
-              <img class="avatar" src="./images/avatar.jpeg" alt="Avatar">
-              <p class="username">
-                Newton
-              </p>
-            </section>
-            <p class="tweeter-tag">
-              @Sirisaac
-            </p>
-          </section>
-          <section class="tweet-content">
-            <p>
-              If I have seen further it is by standing on the shoulders of giants
-            </p>
-          </section>
-          <section class="additional-info">
-            <p class="days-ago">
-              10 days ago
-            </p>
-            <section class="icons">
-              <i class="fa-solid fa-flag"></i>
-              <i class="fa-solid fa-retweet"></i>
-              <i class="fa-solid fa-heart"></i>
-            </section>
-          </section>
-        </article>
       </article>
     </main>
   </body>
