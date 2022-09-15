@@ -14,6 +14,14 @@
   padding: 15px;
 }
 
+.tweet:hover {
+  box-shadow: 5px 5px 5px black;
+}
+
+.fa-solid:hover {
+  color: orange;
+}
+
 .user-info {
   display: flex;
   justify-content: space-between;
