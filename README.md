@@ -8,6 +8,17 @@ To post a new tweet, click the double arrow on the top right-hand side of the pa
 
 Tweets are limited to a maximum of 140 characters and connot be empty.
 
+## Final Product
+Desktop View 
+
+![Desktop View](https://github.com/hanisiddiqui/tweeter/blob/master/docs/tweeter-desktop.png)
+
+Mobile View 
+
+![Mobile View](https://github.com/hanisiddiqui/tinyapp/blob/master/docs/tweeter-mobile.png)
+
+
+
 ## Dependencies
 
   - body-parser
