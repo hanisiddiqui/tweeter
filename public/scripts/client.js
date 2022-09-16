@@ -8,39 +8,48 @@ $(document).ready(function() {
   // --- our code goes here ---
   loadTweets();
 
+  $(".arrow").on("click", compose);
+
   $(".input-error-toolong").hide();
   $(".input-error-empty").hide();
+  $(".new-tweet").hide();
 
-  $("#tweet-form").submit(function(event) {
-    event.preventDefault();
-    const data = $(this).serialize();
-    
-    if (data === "text=" || data === null) {
-      $(".input-error-toolong").slideUp();
-      return $(".input-error-empty").slideDown();
-    }
-    const tweetText = $(this).find('textarea');
-
-    if (tweetText.val().length > 140) {
-      $(".input-error-empty").slideUp();
-      return $(".input-error-toolong").slideDown();
-    }
-
-    $.ajax({
-      method: "POST",
-      url: "/tweets",
-      data,
-    })
-      .done(( msg ) => {
-        $(".input-error-toolong").slideUp();
-        $(".input-error-empty").slideUp();
-        $(".tweet-container").empty();
-        loadTweets();
-        this.reset();
-        $(".counter").text(140);
-      });
-  });
+  $("#tweet-form").submit(tweetFormSubmit);
 });
+
+const tweetFormSubmit = function(event) {
+  event.preventDefault();
+  const data = $(this).serialize();
+  
+  if (data === "text=" || data === null) {
+    $(".input-error-toolong").slideUp();
+    return $(".input-error-empty").slideDown();
+  }
+  const tweetText = $(this).find('textarea');
+
+  if (tweetText.val().length > 140) {
+    $(".input-error-empty").slideUp();
+    return $(".input-error-toolong").slideDown();
+  }
+
+  $.ajax({
+    method: "POST",
+    url: "/tweets",
+    data,
+  })
+    .done(( msg ) => {
+      $(".input-error-toolong").slideUp();
+      $(".input-error-empty").slideUp();
+      $(".tweet-container").empty();
+      loadTweets();
+      this.reset();
+      $(".counter").text(140);
+    });
+};
+
+const compose = function () {
+  $(".new-tweet").slideToggle();
+};
 
 const loadTweets = function () {
   $.ajax('/tweets', { method: 'GET'})
