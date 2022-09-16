@@ -14,20 +14,26 @@
   color: white;
 }
 
+.tweet-button:hover {
+  box-shadow: 3px 3px 3px black;
+}
+
 .tweet-input {
   border-right-style: none;
   border-left-style: none;
   border-top-style: none;
   border-bottom-width: thick;
   width: 100%;
-  height: 71px;
+  height: 70px;
   background-color: #f4f1ec;
   resize: none;
+  padding-top: 20px;
 }
 
 .tweet-input::placeholder {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  /* padding-top: 20px; */
 }
 
 .negative-chars {

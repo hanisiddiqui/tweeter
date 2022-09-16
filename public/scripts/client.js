@@ -4,6 +4,44 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+$(document).ready(function() {
+  // --- our code goes here ---
+  loadTweets();
+
+  $(".input-error-toolong").hide();
+  $(".input-error-empty").hide();
+
+  $("#tweet-form").submit(function(event) {
+    event.preventDefault();
+    const data = $(this).serialize();
+    
+    if (data === "text=" || data === null) {
+      $(".input-error-toolong").slideUp();
+      return $(".input-error-empty").slideDown();
+    }
+    const tweetText = $(this).find('textarea');
+
+    if (tweetText.val().length > 140) {
+      $(".input-error-empty").slideUp();
+      return $(".input-error-toolong").slideDown();
+    }
+
+    $.ajax({
+      method: "POST",
+      url: "/tweets",
+      data,
+    })
+      .done(( msg ) => {
+        $(".input-error-toolong").slideUp();
+        $(".input-error-empty").slideUp();
+        $(".tweet-container").empty();
+        loadTweets();
+        this.reset();
+        $(".counter").text(140);
+      });
+  });
+});
+
 const loadTweets = function () {
   $.ajax('/tweets', { method: 'GET'})
   .then(function(moreTweets) {
@@ -23,38 +61,6 @@ const escapeUserText = function (str) {
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
-
-$(document).ready(function() {
-  // --- our code goes here ---
-  loadTweets();
-
-  $(".input-error-toolong").hide();
-  $(".input-error-empty").hide();
-
-  $("#tweet-form").submit(function(event) {
-    event.preventDefault();
-    const data = $(this).serialize();
-    
-    if (data === "text=" || data === null) {
-      return $(".input-error-empty").slideDown();
-    }
-    const tweetText = $(this).find('textarea');
-
-    if (tweetText.val().length > 140) {
-      return $(".input-error-toolong").slideDown();
-    }
-    $.ajax({
-      method: "POST",
-      url: "/tweets",
-      data,
-    })
-      .done(( msg ) => {
-        $(".tweet-container").empty();
-        loadTweets();
-        this.reset();
-      });
-  });
-});
 
 const createTweetElement  = (tweetObject) => {
   const safeHTML = `<p>${escapeUserText(tweetObject.content.text)}</p>`;

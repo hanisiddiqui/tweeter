@@ -20,7 +20,6 @@ body {
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
   display: flex;
-  align-items: center;
   flex-direction: column;
 }
 
@@ -37,4 +36,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+ }
+
+ @media only screen and (min-width: 1200px) {
+  body {
+    flex-direction: row;
+  }
+
+  main {
+    padding-top: 120px;
+    width: 60%;
+  }
+
+  header {
+    position: sticky;
+    top: 300px;
+  }
  }

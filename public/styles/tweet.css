@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   width: 90%;
+  padding-bottom: 20px;
 }
 
 .tweet {
@@ -40,6 +41,7 @@
 .tweet-content {
   border-bottom: solid;
   border-width: 3px;
+  word-wrap: break-word;
 }
 
 .additional-info {
@@ -50,4 +52,8 @@
 .days-ago {
   font-size: medium;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.icons {
+  padding-top: 15px;
 }
