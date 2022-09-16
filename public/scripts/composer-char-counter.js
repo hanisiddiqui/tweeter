@@ -5,6 +5,7 @@ $(document).ready(function() {
   $("#tweet-text").on("input", onInput);
 });
 
+//Display character count when typing in form
 const onInput = function() {
   $(".input-error-empty").slideUp();
   const input = $(this);
