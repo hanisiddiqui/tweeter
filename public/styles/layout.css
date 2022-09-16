@@ -19,8 +19,6 @@ body {
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
-  display: flex;
-  flex-direction: column;
 }
 
 /*
@@ -32,24 +30,15 @@ body {
   background-color: #f4f1ec;
  }
 
+ .main-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+
  .container {
   display: flex;
   flex-direction: column;
   align-items: center;
  }
 
- @media only screen and (min-width: 1200px) {
-  body {
-    flex-direction: row;
-  }
-
-  main {
-    padding-top: 120px;
-    width: 60%;
-  }
-
-  header {
-    position: sticky;
-    top: 300px;
-  }
- }

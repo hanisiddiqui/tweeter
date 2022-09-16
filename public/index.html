@@ -44,31 +44,33 @@
         <i class="arrow fa-solid fa-angles-down"></i>
       </div>
     </nav>
-    <header>
-      <div>
-          <img src="/images/profile-hex.png"> 
-      </div>
-      <br>
-      <div>
-          <h2><b>Hani</b> Siddiqui</h2>
-      </div>
-    </header>
-
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section class="new-tweet">
-        <form method="POST" action="/" id="tweet-form">
-          <textarea class="tweet-input" placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
-          <div class="tweet-chars">
-            <button class="tweet-button" type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
-          </div>
-          <p class="input-error-empty"> Cannot post empty tweet </p>
-          <p class="input-error-toolong"> Error: 140 character limit. Tweet too long </p>
-        </form>
-      </section>
-      <article class="tweet-container">
-      </article>
-    </main>
+    <section class="main-header">
+      <header>
+        <div>
+            <img src="/images/profile-hex.png"> 
+        </div>
+        <br>
+        <div>
+            <h2><b>Hani</b> Siddiqui</h2>
+        </div>
+      </header>
+  
+      <!-- Page-specific (main) content here -->
+      <main class="container">
+        <section class="new-tweet">
+          <form method="POST" action="/" id="tweet-form">
+            <textarea class="tweet-input" placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
+            <div class="tweet-chars">
+              <button class="tweet-button" type="submit">Tweet</button>
+              <output name="counter" class="counter" for="tweet-text">140</output>
+            </div>
+            <p class="input-error-empty"> Cannot post empty tweet </p>
+            <p class="input-error-toolong"> Error: 140 character limit. Tweet too long </p>
+          </form>
+        </section>
+        <article class="tweet-container">
+        </article>
+      </main>
+    </section>"
   </body>
 </html>

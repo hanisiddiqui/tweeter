@@ -1,11 +1,32 @@
 header {
   margin-top: 120px;
+  padding-top: 40px;
   height: 400px;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   background-color: yellow;
   background-image: url(../images/header-texture.png);
 }
+
+@media only screen and (min-width: 1024px){
+
+  .main-header {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  main {
+    padding-top: 120px;
+    width: 125%;
+  }
+
+  header {
+    height: 50vh;
+    position: sticky;
+    top: 30vh;
+    margin-top: -600px;
+  }
+ }
