@@ -61,11 +61,15 @@ const loadTweets = function () {
   })
 };
 
+const prependTweet = function (tweet) {
+  const html = createTweetElement(tweet);
+  $('.tweet-container').prepend(html);
+};
+
 //send all tweets one by one to be rendered into html
 const renderTweets = (tweets) => {
   for (let tweet of tweets) {
-    const html = createTweetElement(tweet);
-    $('.tweet-container').prepend(html);
+    prependTweet(tweet);
   }
 };
 

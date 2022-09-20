@@ -15,18 +15,20 @@ header {
 
   .main-header {
     flex-direction: row;
-    justify-content: center;
   }
 
   main {
     padding-top: 120px;
-    width: 125%;
+    width: 60%;
+    margin-left: 40%;
   }
 
   header {
-    height: 50vh;
-    position: sticky;
-    top: 30vh;
-    margin-top: -600px;
+    position: fixed;
+    bottom: 70%;
+    top: 20%;
+    margin-left: 2.5%;
+    width: 40%;
+    left: -20px;
   }
  }
